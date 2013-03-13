@@ -1,0 +1,59 @@
+using System.Collections.Generic;
+using System.Text;
+
+public class Class : School, IComment
+{
+    internal string identifier;
+    private List<Teacher> teachers= new List<Teacher>();
+    private List<Student> students = new List<Student>();
+
+    public string AClass
+    {
+        get { return this.identifier; }
+        set { this.identifier = value; }
+    }
+    public Class(string identifier)
+    {
+        this.identifier = identifier;
+    }
+
+    public List<Student> Student
+    {
+        get { return this.students; }
+        set { this.students = new List<Student>(); }
+    }
+    public void AddStudent(Student student)
+    {
+        students.Add(student);
+    }
+
+    public List<Teacher> Teacher
+    {
+        get { return this.teachers; }
+        set { this.teachers = new List<Teacher>(); }
+    }
+    public void AddTeacher(Teacher teacher)
+    {
+        teachers.Add(teacher);
+    }
+    public string AddComment(string comment)
+    {
+        return comment;
+    }
+    public override string ToString()
+    {
+        StringBuilder info = new StringBuilder();
+        info.AppendLine("Class: "+identifier);
+        info.AppendLine("Teachers:");
+        foreach (var teacher in teachers)
+        {
+            info.AppendLine(teacher.ToString());
+        }
+        info.AppendLine("Students:");
+        foreach (var student in students)
+        {
+            info.AppendLine(student.ToString());
+        }
+        return info.ToString();
+    }
+}
